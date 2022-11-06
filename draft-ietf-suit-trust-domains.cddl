@@ -1,8 +1,11 @@
-$$SUIT_Envelope_Extensions //= 
-    (suit-delegation => bstr .cbor SUIT_Delegation)
+$$SUIT_Envelope_Extensions //= (
+    suit-delegation => bstr .cbor SUIT_Delegation)
 $$SUIT_Envelope_Extensions //= SUIT_Integrated_Dependency
 
 SUIT_Delegation = [ + [ + bstr .cbor CWT ] ]
+
+$$SUIT_Manifest_Extensions //= (
+    suit-manifest-component-id => SUIT_Component_Identifier)
 
 CWT = SUIT_Authentication_Block
 
@@ -17,7 +20,7 @@ SUIT_Integrated_Dependency = (
 suit-integrated-dependency-key = tstr
 
 $$severable-manifest-members-choice-extensions //= (
-    suit-dependency-resolution => \
+    suit-dependency-resolution =>
         bstr .cbor SUIT_Command_Sequence / SUIT_Digest)
 
 $$SUIT_Common-extensions //= (
@@ -40,6 +43,8 @@ SUIT_Directive //= (suit-directive-set-parameters,
     {+ SUIT_Parameters})
 SUIT_Directive //= (
     suit-directive-unlink, SUIT_Rep_Policy)
+
+suit-manifest-component-id = 5
 
 suit-delegation = 1
 suit-dependency-resolution = 7
